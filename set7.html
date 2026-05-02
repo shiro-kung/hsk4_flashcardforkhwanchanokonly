@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HSK Flashcards - Set 7</title><link rel="stylesheet" href="assets/style.css"></head><body><header><h1>Set 7</h1><div class="subtitle">คำที่ 601–700 • 100 คำ</div></header><main class="container"><div class="topbar"><a class="back-link" href="index.html">← กลับหน้าเลือกชุด</a><div><strong>Set 7</strong><div class="progress" id="progress"></div></div><button class="btn" onclick="toggleList()">ดูรายการคำ</button></div><section class="card-area"><div class="card" id="card" onclick="flipCard()"><div class="inner"><div class="front"><div class="hanzi" id="frontWord"></div><div class="subtitle">แตะเพื่อดูคำอ่าน + ความหมาย</div></div><div class="back"><div class="pinyin" id="backPinyin"></div><div class="meaning" id="backMeaning"></div></div></div></div></section><div class="controls"><button class="btn" onclick="prevCard()">ก่อนหน้า</button><button class="btn primary" onclick="flipCard()">พลิกการ์ด</button><button class="btn" onclick="nextCard()">ถัดไป</button><button class="btn" onclick="shuffleCards()">สุ่มใหม่</button></div><div id="wordList" class="word-list hidden"></div></main><script>const words = [
+  {
+    "word": "爱情",
+    "pinyin": "àiqí ng",
+    "meaning": "ความรัก"
+  },
+  {
+    "word": "安排",
+    "pinyin": "ānpái",
+    "meaning": "การจัดการ"
+  },
+  {
+    "word": "安全",
+    "pinyin": "ānquán",
+    "meaning": "ความปลอดภัย"
+  },
+  {
+    "word": "按时",
+    "pinyin": "ànshí",
+    "meaning": "ตรงตามเวลา"
+  },
+  {
+    "word": "按照",
+    "pinyin": "ànzhào",
+    "meaning": "ตาม"
+  },
+  {
+    "word": "百分之",
+    "pinyin": "bǎifēnzhī",
+    "meaning": "ร้อยละ, เปอร์เซ็นต์"
+  },
+  {
+    "word": "棒",
+    "pinyin": "bàng",
+    "meaning": "เยี่ยม, สุดยอด"
+  },
+  {
+    "word": "包子",
+    "pinyin": "bāozi",
+    "meaning": "ซาลาเปา"
+  },
+  {
+    "word": "保护",
+    "pinyin": "bǎohù",
+    "meaning": "รักษา, คุ้มครอง"
+  },
+  {
+    "word": "保证",
+    "pinyin": "bǎozhèng",
+    "meaning": "การรับประกัน"
+  },
+  {
+    "word": "报名",
+    "pinyin": "bàomí ng",
+    "meaning": "สมัคร, ลงชื่อ"
+  },
+  {
+    "word": "抱",
+    "pinyin": "bào",
+    "meaning": "กอด, อุ้ม"
+  },
+  {
+    "word": "抱歉",
+    "pinyin": "bàoqiàn",
+    "meaning": "ขอโทษ"
+  },
+  {
+    "word": "倍",
+    "pinyin": "bèi",
+    "meaning": "เท่า"
+  },
+  {
+    "word": "本来",
+    "pinyin": "běnlái",
+    "meaning": "เดิมที"
+  },
+  {
+    "word": "笨",
+    "pinyin": "bèn",
+    "meaning": "โง่"
+  },
+  {
+    "word": "比如",
+    "pinyin": "bǐrú",
+    "meaning": "เช่น"
+  },
+  {
+    "word": "毕业",
+    "pinyin": "bìyè",
+    "meaning": "จบการศึกษา"
+  },
+  {
+    "word": "遍",
+    "pinyin": "biàn",
+    "meaning": "รอบ, ครัง (ลักษณนามของกริยา)"
+  },
+  {
+    "word": "标准",
+    "pinyin": "biāozhǔn",
+    "meaning": "ได้มาตรฐาน"
+  },
+  {
+    "word": "表格",
+    "pinyin": "biǎogé",
+    "meaning": "แบบฟอร์ม, ตาราง"
+  },
+  {
+    "word": "表示",
+    "pinyin": "biǎoshì",
+    "meaning": "แสดง (ความคิด, ความรู้สึก)"
+  },
+  {
+    "word": "表演",
+    "pinyin": "biǎoyǎn",
+    "meaning": "การแสดง"
+  },
+  {
+    "word": "表扬",
+    "pinyin": "biǎoyáng",
+    "meaning": "ค้าชม"
+  },
+  {
+    "word": "饼干",
+    "pinyin": "bǐnggān",
+    "meaning": "คุกกี"
+  },
+  {
+    "word": "并且",
+    "pinyin": "bìngqiě",
+    "meaning": "และ"
+  },
+  {
+    "word": "博士",
+    "pinyin": "bóshì",
+    "meaning": "ดอกเตอร์"
+  },
+  {
+    "word": "不过",
+    "pinyin": "búguò",
+    "meaning": "แต่ว่า"
+  },
+  {
+    "word": "不得不",
+    "pinyin": "bùdébù",
+    "meaning": "ต้อง, จ้าเป็นต้อง"
+  },
+  {
+    "word": "不管",
+    "pinyin": "bùguǎn",
+    "meaning": "ไม่ว่า"
+  },
+  {
+    "word": "不好意思",
+    "pinyin": "bùhǎoyìsi",
+    "meaning": "อาย, เขิน, รู้สึกผิด"
+  },
+  {
+    "word": "不仅",
+    "pinyin": "bùjǐn",
+    "meaning": "ไม่เพียงแต่, นอกจาก"
+  },
+  {
+    "word": "部分",
+    "pinyin": "bùfen",
+    "meaning": "ส่วน"
+  },
+  {
+    "word": "擦",
+    "pinyin": "cā",
+    "meaning": "เช็ด"
+  },
+  {
+    "word": "猜",
+    "pinyin": "cāi",
+    "meaning": "เดา, ทาย"
+  },
+  {
+    "word": "材料",
+    "pinyin": "cáiliào",
+    "meaning": "วัสดุ, ข้อมูล, หลักฐาน"
+  },
+  {
+    "word": "参观",
+    "pinyin": "cānguān",
+    "meaning": "เยี่ยมชม"
+  },
+  {
+    "word": "餐厅",
+    "pinyin": "cāntīng",
+    "meaning": "ร้านอาหาร"
+  },
+  {
+    "word": "厕所",
+    "pinyin": "cèsuǒ",
+    "meaning": "ห้องน้า"
+  },
+  {
+    "word": "差不多",
+    "pinyin": "chàbuduō",
+    "meaning": "ประมาณเกือบ"
+  },
+  {
+    "word": "长城",
+    "pinyin": "Chángchéng",
+    "meaning": "ก้าแพงเมืองจีน"
+  },
+  {
+    "word": "长江",
+    "pinyin": "Cháng jiāng",
+    "meaning": "แม่น้าแยงซีเกียง"
+  },
+  {
+    "word": "尝",
+    "pinyin": "cháng",
+    "meaning": "ชิม"
+  },
+  {
+    "word": "场",
+    "pinyin": "chǎng",
+    "meaning": "รอบ (ลักษณนามของการแข่งขัน ภาพยนตร์)"
+  },
+  {
+    "word": "超过",
+    "pinyin": "chāoguò",
+    "meaning": "เกิน"
+  },
+  {
+    "word": "吵",
+    "pinyin": "chǎo",
+    "meaning": "ทะเลาะ"
+  },
+  {
+    "word": "成功",
+    "pinyin": "chénggōng",
+    "meaning": "ความส้าเร็จ"
+  },
+  {
+    "word": "成为",
+    "pinyin": "chéngwéi",
+    "meaning": "เป็น, กลายเป็น"
+  },
+  {
+    "word": "诚实",
+    "pinyin": "chéngshí",
+    "meaning": "ซื่อสัตย์"
+  },
+  {
+    "word": "乘坐",
+    "pinyin": "chéngzuò",
+    "meaning": "โดยสาร"
+  },
+  {
+    "word": "吃惊",
+    "pinyin": "chījīng",
+    "meaning": "ตกใจ"
+  },
+  {
+    "word": "重新",
+    "pinyin": "chóngxīn",
+    "meaning": "ท้าใหม่"
+  },
+  {
+    "word": "抽烟",
+    "pinyin": "chōuyān",
+    "meaning": "สูบบุหรี่"
+  },
+  {
+    "word": "出差",
+    "pinyin": "chūchāi",
+    "meaning": "ไปท้างานต่างถิ่น"
+  },
+  {
+    "word": "出发",
+    "pinyin": "chūfā",
+    "meaning": "ออกเดินทาง"
+  },
+  {
+    "word": "出生",
+    "pinyin": "chūshēng",
+    "meaning": "เกิด"
+  },
+  {
+    "word": "厨房",
+    "pinyin": "chúfáng",
+    "meaning": "ห้องครัว"
+  },
+  {
+    "word": "传真",
+    "pinyin": "chuánzhēn",
+    "meaning": "แฟกซ์"
+  },
+  {
+    "word": "窗户",
+    "pinyin": "chuānghu",
+    "meaning": "หน้าต่าง"
+  },
+  {
+    "word": "词语",
+    "pinyin": "cíyǔ",
+    "meaning": "ค้าศัพท์"
+  },
+  {
+    "word": "从来",
+    "pinyin": "cónglái",
+    "meaning": "แต่ไหนแต่ไรมา"
+  },
+  {
+    "word": "粗心",
+    "pinyin": "cūxīn",
+    "meaning": "สะเพร่า"
+  },
+  {
+    "word": "存",
+    "pinyin": "cún",
+    "meaning": "ฝากออม,เก็บ"
+  },
+  {
+    "word": "错误",
+    "pinyin": "cuòwù",
+    "meaning": "ข้อผิดพลาด"
+  },
+  {
+    "word": "答案",
+    "pinyin": "dá’àn",
+    "meaning": "ค้าตอบ"
+  },
+  {
+    "word": "打扮",
+    "pinyin": "dǎban",
+    "meaning": "แต่งตัว"
+  },
+  {
+    "word": "打扰",
+    "pinyin": "dǎrǎo",
+    "meaning": "รบกวน"
+  },
+  {
+    "word": "打印",
+    "pinyin": "dǎyìn",
+    "meaning": "พิมพ์"
+  },
+  {
+    "word": "打招呼",
+    "pinyin": "dǎzhāohu",
+    "meaning": "ทักทาย"
+  },
+  {
+    "word": "打折",
+    "pinyin": "dǎzhé",
+    "meaning": "ลดราคา"
+  },
+  {
+    "word": "打针",
+    "pinyin": "dǎzhēn",
+    "meaning": "ฉีดยา"
+  },
+  {
+    "word": "大概",
+    "pinyin": "dàgài",
+    "meaning": "คงจะ"
+  },
+  {
+    "word": "大使馆",
+    "pinyin": "dàshǐguǎn",
+    "meaning": "สถานทูต"
+  },
+  {
+    "word": "大约",
+    "pinyin": "dàyuē",
+    "meaning": "ประมาณ"
+  },
+  {
+    "word": "大夫",
+    "pinyin": "dàifu",
+    "meaning": "หมอ"
+  },
+  {
+    "word": "戴",
+    "pinyin": "dài",
+    "meaning": "สวม, ใส่"
+  },
+  {
+    "word": "当",
+    "pinyin": "dāng",
+    "meaning": "เป็น, ทำหน้าที่เป็น"
+  },
+  {
+    "word": "当时",
+    "pinyin": "dāngshí",
+    "meaning": "ตอนนัน"
+  },
+  {
+    "word": "刀",
+    "pinyin": "dāo",
+    "meaning": "มีด"
+  },
+  {
+    "word": "导游",
+    "pinyin": "dǎoyóu",
+    "meaning": "มัคคุเทศก์, ไกด์"
+  },
+  {
+    "word": "倒",
+    "pinyin": "dǎo",
+    "meaning": "ล้ม"
+  },
+  {
+    "word": "到处",
+    "pinyin": "dàochù",
+    "meaning": "ทุกหนทุกแห่ง"
+  },
+  {
+    "word": "到底",
+    "pinyin": "dàodǐ",
+    "meaning": "ตกลงว่า"
+  },
+  {
+    "word": "道歉",
+    "pinyin": "dàoqiàn",
+    "meaning": "ขอโทษ"
+  },
+  {
+    "word": "得意",
+    "pinyin": "déyì",
+    "meaning": "ดีใจ"
+  },
+  {
+    "word": "得",
+    "pinyin": "de",
+    "meaning": "ได้รับ"
+  },
+  {
+    "word": "登机牌",
+    "pinyin": "dēngjīpái",
+    "meaning": "บัตรขึนเครื่อง"
+  },
+  {
+    "word": "等",
+    "pinyin": "děng",
+    "meaning": "เป็นต้น"
+  },
+  {
+    "word": "低",
+    "pinyin": "dī",
+    "meaning": "ก้ม"
+  },
+  {
+    "word": "底",
+    "pinyin": "dǐ",
+    "meaning": "ปลาย, ใต้"
+  },
+  {
+    "word": "地点",
+    "pinyin": "dìdiǎn",
+    "meaning": "สถานที่"
+  },
+  {
+    "word": "地球",
+    "pinyin": "dì qiú",
+    "meaning": "โลก"
+  },
+  {
+    "word": "地址",
+    "pinyin": "dìzhǐ",
+    "meaning": "ที่อยู่"
+  },
+  {
+    "word": "调查",
+    "pinyin": "diàochá",
+    "meaning": "การส้ารวจ"
+  },
+  {
+    "word": "掉",
+    "pinyin": "diào",
+    "meaning": "หล่นตก"
+  },
+  {
+    "word": "丢",
+    "pinyin": "diū",
+    "meaning": "หาย"
+  },
+  {
+    "word": "动作",
+    "pinyin": "dòngzuò",
+    "meaning": "ท่า, ท่าทาง"
+  },
+  {
+    "word": "堵车",
+    "pinyin": "dǔchē",
+    "meaning": "รถติด"
+  },
+  {
+    "word": "肚子",
+    "pinyin": "dùzi",
+    "meaning": "ท้อง"
+  },
+  {
+    "word": "短信",
+    "pinyin": "duǎnxìn",
+    "meaning": "ข้อความสัน"
+  }
+];</script><script src="assets/script.js"></script></body></html>
