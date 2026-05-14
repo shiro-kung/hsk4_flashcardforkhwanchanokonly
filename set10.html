@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>HSK Flashcards - Set 10</title><link rel="stylesheet" href="assets/style.css"></head><body><header><h1>Set 10</h1><div class="subtitle">คำที่ 901–1000 • 100 คำ</div></header><main class="container"><div class="topbar"><a class="back-link" href="index.html">← กลับหน้าเลือกชุด</a><div><strong>Set 10</strong><div class="progress" id="progress"></div></div><button class="btn" onclick="toggleList()">ดูรายการคำ</button></div><section class="card-area"><div class="card" id="card" onclick="flipCard()"><div class="inner"><div class="front"><div class="hanzi" id="frontWord"></div><div class="subtitle">แตะเพื่อดูคำอ่าน + ความหมาย</div></div><div class="back"><div class="pinyin" id="backPinyin"></div><div class="meaning" id="backMeaning"></div></div></div></div></section><div class="controls"><button class="btn" onclick="prevCard()">ก่อนหน้า</button><button class="btn primary" onclick="flipCard()">พลิกการ์ด</button><button class="btn" onclick="nextCard()">ถัดไป</button><button class="btn" onclick="shuffleCards()">สุ่มใหม่</button></div><div id="wordList" class="word-list hidden"></div></main><script>const words = [
+  {
+    "word": "美丽",
+    "pinyin": "měilì",
+    "meaning": "สวยงาม"
+  },
+  {
+    "word": "梦",
+    "pinyin": "mèng",
+    "meaning": "ฝัน"
+  },
+  {
+    "word": "迷路",
+    "pinyin": "mílù",
+    "meaning": "หลงทาง"
+  },
+  {
+    "word": "密码",
+    "pinyin": "mìmǎ",
+    "meaning": "รหัสลับ"
+  },
+  {
+    "word": "免费",
+    "pinyin": "miǎnfèi",
+    "meaning": "ฟรี"
+  },
+  {
+    "word": "秒",
+    "pinyin": "miǎo",
+    "meaning": "วินาที"
+  },
+  {
+    "word": "民族",
+    "pinyin": "mí nzú",
+    "meaning": "ชนชาติ"
+  },
+  {
+    "word": "母亲",
+    "pinyin": "mǔqīn",
+    "meaning": "แม่"
+  },
+  {
+    "word": "目的",
+    "pinyin": "mùdì",
+    "meaning": "จุดประสงค์"
+  },
+  {
+    "word": "内",
+    "pinyin": "nèi",
+    "meaning": "ข้างใน"
+  },
+  {
+    "word": "内容",
+    "pinyin": "nèiróng",
+    "meaning": "เนือหา"
+  },
+  {
+    "word": "耐心",
+    "pinyin": "nàixīn",
+    "meaning": "ความอดทน"
+  },
+  {
+    "word": "难道",
+    "pinyin": "nándào",
+    "meaning": "หรือ,หรือว่า(ใช้ในประโยคย้อนถาม)"
+  },
+  {
+    "word": "难受",
+    "pinyin": "nánshòu",
+    "meaning": "ไม่สบาย, ทนไม่ไหว"
+  },
+  {
+    "word": "能力",
+    "pinyin": "nénglì",
+    "meaning": "ความสามารถ"
+  },
+  {
+    "word": "年龄",
+    "pinyin": "niánlí ng",
+    "meaning": "อายุ"
+  },
+  {
+    "word": "弄",
+    "pinyin": "nòng",
+    "meaning": "ท้า"
+  },
+  {
+    "word": "暖和",
+    "pinyin": "nuǎnhuo",
+    "meaning": "อบอุ่น"
+  },
+  {
+    "word": "偶尔",
+    "pinyin": "ǒu’ěr",
+    "meaning": "บางที"
+  },
+  {
+    "word": "排队",
+    "pinyin": "páiduì",
+    "meaning": "เข้าแถว"
+  },
+  {
+    "word": "排列",
+    "pinyin": "páiliè",
+    "meaning": "จัดเรียง"
+  },
+  {
+    "word": "排球",
+    "pinyin": "páiqí u",
+    "meaning": "วอลเลย์บอล"
+  },
+  {
+    "word": "判断",
+    "pinyin": "pànduàn",
+    "meaning": "ข้อตัดสิน, ข้อวินิจฉัย"
+  },
+  {
+    "word": "陪",
+    "pinyin": "péi",
+    "meaning": "อยู่เป็นเพื่อน"
+  },
+  {
+    "word": "批评",
+    "pinyin": "pīpíng",
+    "meaning": "ค้าวิจารณ์"
+  },
+  {
+    "word": "皮肤",
+    "pinyin": "pífū",
+    "meaning": "ผิวหนัง"
+  },
+  {
+    "word": "脾气",
+    "pinyin": "pí qi",
+    "meaning": "นิสัย"
+  },
+  {
+    "word": "篇",
+    "pinyin": "piān",
+    "meaning": "ฉบับ, ชิน (ลักษณนามของบทความ)"
+  },
+  {
+    "word": "骗",
+    "pinyin": "piàn",
+    "meaning": "หลอก"
+  },
+  {
+    "word": "乒乓球",
+    "pinyin": "pīngpāngqiú",
+    "meaning": "ปิงปอง"
+  },
+  {
+    "word": "平时",
+    "pinyin": "pí ngshí",
+    "meaning": "ปกติ"
+  },
+  {
+    "word": "瓶子",
+    "pinyin": "pí ngzi",
+    "meaning": "ขวด"
+  },
+  {
+    "word": "破",
+    "pinyin": "pò",
+    "meaning": "ขาด"
+  },
+  {
+    "word": "葡萄",
+    "pinyin": "pútao",
+    "meaning": "องุ่น"
+  },
+  {
+    "word": "普遍",
+    "pinyin": "pǔbiàn",
+    "meaning": "อย่างแพร่หลาย, เป็นธรรมดา"
+  },
+  {
+    "word": "其次",
+    "pinyin": "qí cì",
+    "meaning": "ล้าดับต่อมา"
+  },
+  {
+    "word": "其中",
+    "pinyin": "qízhōng",
+    "meaning": "ในจ้านวนนี"
+  },
+  {
+    "word": "起来",
+    "pinyin": "qǐlái",
+    "meaning": "ขึนมา"
+  },
+  {
+    "word": "气候",
+    "pinyin": "qì hòu",
+    "meaning": "สภาพอากาศ"
+  },
+  {
+    "word": "千万",
+    "pinyin": "qiānwàn",
+    "meaning": "เด็ดขาด"
+  },
+  {
+    "word": "签证",
+    "pinyin": "qiānzhèng",
+    "meaning": "วีซ่า"
+  },
+  {
+    "word": "敲",
+    "pinyin": "qiāo",
+    "meaning": "เคาะ"
+  },
+  {
+    "word": "桥",
+    "pinyin": "qiáo",
+    "meaning": "สะพาน"
+  },
+  {
+    "word": "巧克力",
+    "pinyin": "qiǎokèlì",
+    "meaning": "ช็อกโกแลต"
+  },
+  {
+    "word": "亲戚",
+    "pinyin": "qīnqi",
+    "meaning": "ญาติ"
+  },
+  {
+    "word": "轻",
+    "pinyin": "qīng",
+    "meaning": "เบา"
+  },
+  {
+    "word": "轻松",
+    "pinyin": "qīngsōng",
+    "meaning": "ผ่อนคลาย"
+  },
+  {
+    "word": "情况",
+    "pinyin": "qí ngkuàng",
+    "meaning": "สถานการณ์"
+  },
+  {
+    "word": "请假",
+    "pinyin": "qǐngjià",
+    "meaning": "ลา"
+  },
+  {
+    "word": "穷",
+    "pinyin": "qióng",
+    "meaning": "ยากจน"
+  },
+  {
+    "word": "区别",
+    "pinyin": "qūbié",
+    "meaning": "ความแตกต่าง"
+  },
+  {
+    "word": "取",
+    "pinyin": "qǔ",
+    "meaning": "เบิก"
+  },
+  {
+    "word": "全部",
+    "pinyin": "quánbù",
+    "meaning": "ทังหมด"
+  },
+  {
+    "word": "缺点",
+    "pinyin": "quēdiǎn",
+    "meaning": "ข้อเสีย"
+  },
+  {
+    "word": "缺少",
+    "pinyin": "quēshǎo",
+    "meaning": "ขาด, ขาดแคลน"
+  },
+  {
+    "word": "却",
+    "pinyin": "què",
+    "meaning": "กลับ"
+  },
+  {
+    "word": "确实",
+    "pinyin": "quèshí",
+    "meaning": "อย่างแท้จริง"
+  },
+  {
+    "word": "然而",
+    "pinyin": "rán’ér",
+    "meaning": "แต่ว่า"
+  },
+  {
+    "word": "热闹",
+    "pinyin": "rènao",
+    "meaning": "คึกคัก, ครึกครืน"
+  },
+  {
+    "word": "任何",
+    "pinyin": "rènhé",
+    "meaning": "ใดๆ"
+  },
+  {
+    "word": "任务",
+    "pinyin": "rènwu",
+    "meaning": "ภารกิจ"
+  },
+  {
+    "word": "扔",
+    "pinyin": "rēng",
+    "meaning": "โยนทิง"
+  },
+  {
+    "word": "仍然",
+    "pinyin": "réngrán",
+    "meaning": "ยังคง"
+  },
+  {
+    "word": "日记",
+    "pinyin": "rì jì",
+    "meaning": "บันทึกประจ้าวัน"
+  },
+  {
+    "word": "入口",
+    "pinyin": "rùkǒu",
+    "meaning": "ทางเข้า"
+  },
+  {
+    "word": "散步",
+    "pinyin": "sànbù",
+    "meaning": "เดินเล่น"
+  },
+  {
+    "word": "森林",
+    "pinyin": "sēnlín",
+    "meaning": "ป่าไม้"
+  },
+  {
+    "word": "沙发",
+    "pinyin": "shāfā",
+    "meaning": "โซฟา"
+  },
+  {
+    "word": "伤心",
+    "pinyin": "shāngxīn",
+    "meaning": "เสียใจ"
+  },
+  {
+    "word": "商量",
+    "pinyin": "shāngliang",
+    "meaning": "ปรึกษา"
+  },
+  {
+    "word": "稍微",
+    "pinyin": "shāowēi",
+    "meaning": "เล็กน้อย"
+  },
+  {
+    "word": "勺子",
+    "pinyin": "sháozi",
+    "meaning": "ช้อน"
+  },
+  {
+    "word": "社会",
+    "pinyin": "shèhuì",
+    "meaning": "สังคม"
+  },
+  {
+    "word": "申请",
+    "pinyin": "shēnqǐng",
+    "meaning": "ขอ, ยื่นเรื่อง"
+  },
+  {
+    "word": "深",
+    "pinyin": "shēn",
+    "meaning": "ลึก"
+  },
+  {
+    "word": "甚至",
+    "pinyin": "shènzhì",
+    "meaning": "ถึงขนาด"
+  },
+  {
+    "word": "生活",
+    "pinyin": "shēnghuó",
+    "meaning": "การด้ารงชีวิต"
+  },
+  {
+    "word": "生命",
+    "pinyin": "shēngmìng",
+    "meaning": "ชีวิต"
+  },
+  {
+    "word": "生意",
+    "pinyin": "shēngyi",
+    "meaning": "การค้า"
+  },
+  {
+    "word": "省",
+    "pinyin": "shěng",
+    "meaning": "มณฑล"
+  },
+  {
+    "word": "剩",
+    "pinyin": "shèng",
+    "meaning": "เหลือ"
+  },
+  {
+    "word": "失败",
+    "pinyin": "shībài 虽然经历过很多次～，但我从来没有放弃",
+    "meaning": "ความพ่ายแพ้, ความล้มเหลว"
+  },
+  {
+    "word": "失望",
+    "pinyin": "shīwàng",
+    "meaning": "ผิดหวัง"
+  },
+  {
+    "word": "师傅",
+    "pinyin": "shīfu",
+    "meaning": "ค้าเรียกช่างฝีมือหรือผู้ที่มีความสามารถเฉพาะทาง"
+  },
+  {
+    "word": "十分",
+    "pinyin": "shífēn",
+    "meaning": "มาก"
+  },
+  {
+    "word": "实际",
+    "pinyin": "shí jì",
+    "meaning": "จริง, แท้จริง"
+  },
+  {
+    "word": "实在",
+    "pinyin": "shí zaì",
+    "meaning": "จริงๆ"
+  },
+  {
+    "word": "使",
+    "pinyin": "shǐ",
+    "meaning": "ท้าให้"
+  },
+  {
+    "word": "使用",
+    "pinyin": "shǐyòng",
+    "meaning": "ใช้"
+  },
+  {
+    "word": "世纪",
+    "pinyin": "shì jì",
+    "meaning": "ศตวรรษ"
+  },
+  {
+    "word": "是否",
+    "pinyin": "shìfǒu",
+    "meaning": "หรือไม่"
+  },
+  {
+    "word": "适合",
+    "pinyin": "shì hé",
+    "meaning": "เหมาะ"
+  },
+  {
+    "word": "适应",
+    "pinyin": "shìyì ng",
+    "meaning": "ปรับตัวให้เข้ากับ"
+  },
+  {
+    "word": "收",
+    "pinyin": "shōu",
+    "meaning": "ได้รับ"
+  },
+  {
+    "word": "收入",
+    "pinyin": "shōurù",
+    "meaning": "รายรับ, รายได้"
+  },
+  {
+    "word": "收拾",
+    "pinyin": "shōushi",
+    "meaning": "จัด, เก็บ"
+  },
+  {
+    "word": "首都",
+    "pinyin": "shǒudū",
+    "meaning": "เมืองหลวง"
+  },
+  {
+    "word": "首先",
+    "pinyin": "shǒuxiān",
+    "meaning": "ก่อนอื่น"
+  },
+  {
+    "word": "受不了",
+    "pinyin": "shòubuliǎo",
+    "meaning": "ทนไม่ไหว"
+  },
+  {
+    "word": "受到",
+    "pinyin": "shòudào",
+    "meaning": "ได้รับ"
+  }
+];</script><script src="assets/script.js"></script></body></html>
